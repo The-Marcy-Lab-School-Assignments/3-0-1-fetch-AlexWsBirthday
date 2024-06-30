@@ -80,10 +80,9 @@ export const getUsers = () => {
 
 };
 
-console.log(getUsers());
-
 
 export const getUserPosts = (userId, maxNumPosts = 3) => {
+    //using a url that links to each individual's posts 
     const url = `https://jsonplaceholder.typicode.com/users/${userId}/posts`;
 
     const userPosts = fetch(url).then(response => {
@@ -96,7 +95,7 @@ export const getUserPosts = (userId, maxNumPosts = 3) => {
     })
         //redefining the response, now translated, as data
         .then(data => {
-            //taking the data from the user and 
+            //taking the data from the user (their posts) and selecting three of them from the array provided to be returned
             data.slice(0, maxNumPosts)
         })
         .catch((err) => {
@@ -105,41 +104,52 @@ export const getUserPosts = (userId, maxNumPosts = 3) => {
         });
 
     //forgot I had to return the promise 
+    //returning the promise means we are returning the user posts, produced by a promise 
     return userPosts
 
 };
 
 export const createNewUser = (newUserData) => {
 
-    //fetching the user url
-    return fetch(url, {
+    //fetching the user url using the variable that was established at the top of the page 
+    return fetch(userUrl, {
         //feeding the fetch function more information about the kind of promise we're making with the data from the url
         //This is called an options object, with specifications to customize the fetch request we're sending
-        //method is post, meaning we're adding to the database
+        //method is post, meaning we're adding to the database instead of getting data from it
+
+        //1. Contains the request type along with the resource path and the HTTP version. I want to see examples of these though.(1)
         method: 'POST',
         //I don't know why headers are here or what the information below is?
-        //Apparently the headers specify the content type, telling the server the content is json
+        //Apparently the headers specify the content type, telling the server the content is json. 
+        //Since we're feeding the database an object, we have to specify 
+
+        //2. Headers are essentially more context about the request type, "including the Host, User-Agent (identifying the client software), Accept (types of responses the client can process), and other metadata."(1)
         headers: {
+            //this header is telling us that the type of the content is json, meaning the server will be able to understand the information that it's been given.
             'Content-Type': 'application/json'
         },
-        //I also don't really know why we're doing this
+        //I also don't really know why we're doing this SHUT UP WATCH THIS
+
+        // The body holds the data we want to add to the server (1)
+        //We have to change newUserData, a Javascript object, into a json string using stringify since that's what the server can understand (and its also the type of information we specified in the header)
         body: JSON.stringify(newUserData)
     })
+        //Response tells us if the post was made successfully 
         .then(response => {
+            //Always have a condition to catch if something goes wrong
             if (!response.ok) {
                 throw new Error(`Error: ${response.status}`)
 
             }
             return response.json();
         })
-        .then(data => {
-
-
-
-        }).catch((err) => {
+        //returning the response data
+        .then(data => data)
+        //catching the error 
+        .catch((err) => {
             console.error('Error:', err)
             throw err;
         });
 
-    return newUser
+
 }

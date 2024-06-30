@@ -46,14 +46,14 @@
   },
   "testScores": {
     "Render Functions Tests": {
-      "ReFuTe1": 0,
-      "ReFuTe2": 0,
-      "ReFuTe3": 0,
-      "ReFuTe4": 0,
-      "ReFuTe5": 0,
-      "ReFuTe6": 0,
-      "ReFuTe7": 0,
-      "ReFuTe8": 0
+      "ReFuTe1": 1,
+      "ReFuTe2": 1,
+      "ReFuTe3": 1,
+      "ReFuTe4": 1,
+      "ReFuTe5": 1,
+      "ReFuTe6": 1,
+      "ReFuTe7": 1,
+      "ReFuTe8": 1
     },
     "Fetch Function Tests": {
       "FeFuTe1": 1,
@@ -62,8 +62,8 @@
       "FeFuTe4": 1,
       "FeFuTe5": 1,
       "FeFuTe6": 1,
-      "FeFuTe7": 0,
-      "FeFuTe8": 0
+      "FeFuTe7": 1,
+      "FeFuTe8": 1
     },
     "App Tests": {
       "ApTe1": 0,
@@ -73,9 +73,9 @@
     }
   },
   "humanReadable": {
-    "Render Functions Tests": "0/8",
-    "finalTestScore": "FINAL SCORE: 6/20",
-    "Fetch Function Tests": "6/8",
+    "Render Functions Tests": "8/8",
+    "finalTestScore": "FINAL SCORE: 16/20",
+    "Fetch Function Tests": "8/8",
     "App Tests": "0/4"
   }
 }
